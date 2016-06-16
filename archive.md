@@ -15,5 +15,3 @@ title: Blog archive
 				{% endif %}
 			<li><a href="{{ post.url | prepend: site.baseurl | prepend: site.url}}">{{ post.title }}</a></li>
 	{% endfor %}
-	</div>
-</div>
