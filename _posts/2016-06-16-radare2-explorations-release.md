@@ -8,8 +8,6 @@ tags:
 share: true
 ---
 
-# Radare2 Explorations Release
-
 On the 10th of June, 2016, I've [officially](http://radare.today/posts/radare2-explorations/) released my humble contribution to the radare2 community, [radare2 Explorations](https://www.gitbook.com/book/monosource/radare2-explorations/details), a free, open-source, practical book which teaches you the basics of using radare2 in an easy-to-follow manner.
 
 ## Future plans
