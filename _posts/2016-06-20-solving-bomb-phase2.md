@@ -25,15 +25,15 @@ $ r2 -Ad bomb
 
 We'll continue until `sym.phase_2`
 
-{% highlight raw %}
+{% highlight nasm %}
 [0xf76fbd00]> dcu sym.phase_2
-{% endhighlight raw %}
+{% endhighlight nasm %}
 
 I'll not spoil the solution for `phase_1`, even though it's fairly easy to get to it.
 
 If we look at the code of `phase_2`, we'll notice that it reads six numbers and then compares them with some values in a loop.
 
-{% highlight raw %}
+{% highlight nasm %}
 ╒ (fcn) sym.phase_2 79
 │           ; var int local_28h @ ebp-0x28
 │           ; var int local_18h @ ebp-0x18
@@ -71,7 +71,7 @@ If we look at the code of `phase_2`, we'll notice that it reads six numbers and 
 │           0x08048b93      89ec           mov esp, ebp
 │           0x08048b95      5d             pop ebp
 ╘           0x08048b96      c3             ret
-{% endhighlight raw %}
+{% endhighlight nasm %}
 
 We're going to make this phase solve itself, because we're too ~~lazy~~ smart to do any manual work (or any work, for that matter).
 
@@ -79,23 +79,23 @@ We're going to make this phase solve itself, because we're too ~~lazy~~ smart to
 
 We're going to set two breakpoints. One at the `cmp` instruction within the loop, at `0x8048b7e`, and one right after the loop, at `0x8048b8e`.
 
-{% highlight raw %}
+{% highlight nasm %}
 [0x08048b48]> db 0x8048b7e
 [0x08048b48]> db 0x8048b8e
 [0x08048b48]> db
 0x08048b7e - 0x08048b7f 1 --x sw break enabled cmd="" name="0x8048b7e" module=""
 0x08048b8e - 0x08048b8f 1 --x sw break enabled cmd="" name="0x8048b8e" module=""
-{% endhighlight raw %}
+{% endhighlight nasm %}
 
 Now comes the fun part. In radare2, you can add commands to be executed whenever a breakpoint is hit via `dbc`. We'll force our values, which reside at `esi + ebx*4` to always be equal to the value in `eax`.
 
-{% highlight raw %}
+{% highlight nasm %}
 [0x08048b48]> "dbc 0x8048b7e .dr*;*(esi+ebx*4)=`dr eax`"
 [0x08048b48]> "dbc 0x8048b8e pf dddddd @ esi"
 [0x08048b48]> db
 0x08048b7e - 0x08048b7f 1 --x sw break enabled cmd=".dr*;*(esi+ebx*4)=`dr eax`" name="0x8048b7e" module=""
 0x08048b8e - 0x08048b8f 1 --x sw break enabled cmd="pf dddddd @ esi" name="0x8048b8e" module=""
-{% endhighlight raw %}
+{% endhighlight nasm %}
 
 The first `dbc` statement adds two commands to be executed whenever the breakpoint at `cmp` is hit. `.dr*` executes `dr*` as radare2 commands, to force "sync" the registers when the breakpoint is hit.
 `` *(esi+ebx*4)=`dr eax` `` writes at `esi + ebx*4` (our input) the value of `eax` (the desired value). Thus, the comparison will always be true until the loop ends.
@@ -104,16 +104,16 @@ The second `dbc` statement prints the resulting `esi` at the end of the loop, wh
 
 There is one last element that is out of place: execution will still break inside the loop at every iteration. We want our commands to be executed at that point, but without breaking. We can set this breakpoint to be a tracepoint instead.
 
-{% highlight raw %}
+{% highlight nasm %}
 [0x08048b48]> dbte 0x8048b7e
 [0x08048b48]> db
 0x08048b7e - 0x08048b7f 1 --x sw trace enabled cmd=".dr*;*(esi+ebx*4)=`dr eax`" name="0x8048b7e" module=""
 0x08048b8e - 0x08048b8f 1 --x sw break enabled cmd="pf dddddd @ esi" name="0x8048b8e" module=""
-{% endhighlight raw %}
+{% endhighlight nasm %}
 
 Now we should be set. Just `dc` and enjoy.
 
-{% highlight raw %}
+{% highlight nasm %}
 [0x08048b4b]> dc
 hit tracepoit at: 8048b7e
 fs+regs
@@ -143,7 +143,7 @@ hit breakpoint at: 8048b8e
 0xff9aa63c = 24
 0xff9aa640 = 120
 0xff9aa644 = 720
-{% endhighlight raw %}
+{% endhighlight nasm %}
 
 We're done with this phase. Those are the defusal numbers.
 
