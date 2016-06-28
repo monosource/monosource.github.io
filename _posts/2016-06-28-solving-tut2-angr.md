@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Solving Radare2 Explorations Tutorial 2 with angr"
-date: 2016-06-28 10:25:06
+date: 2016-06-28 00:25:06
 description: A very short intro to angr and symbolic execution
 tags:
  - symbolic execution
@@ -100,7 +100,7 @@ Let's have a look at the internals of this binary using radare2.
 
 The program seems fairly simple. It reads a password from stdin, calls the `sym.check` function, and then prints "Good job! :)" or "Wrong!" depending on the result of the verification.
 
-We're going to solve this blindly. `angr` is going to do all of the work for us.We don't even care what the check function does. We just need to tell `angr` that we want an input which gets us at `0x08048485`, which is our "success" state, and avoid `0x080484a1`, which is our "failure" state.
+We're going to solve this blindly. `angr` is going to do all of the work for us. We don't even care what the check function does. We just need to tell `angr` that we want an input which gets us at `0x08048485`, which is our "success" state, and avoid `0x080484a1`, which is our "failure" state.
 
 {% highlight python %}
 import angr
