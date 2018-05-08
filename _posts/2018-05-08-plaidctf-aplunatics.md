@@ -310,6 +310,6 @@ PCTF{APL_code_is_we!rd_t0_l00k_@}
 
 So there you have it, a solution in APL which can fit in one tweet.
 
-I hope you had fun reading (and perhaps even trying the code at [TryAPL](tryapl.org)). Protip: the backtick ``(`)`` can be used to enter APL's special characters (i.e. ``(`w)`` is `⍵`)
+I hope you had fun reading (and perhaps even trying the code at [TryAPL](https://tryapl.org)). Protip: the backtick ``(`)`` can be used to enter APL's special characters (i.e. ``(`w)`` is `⍵`)
 
 Big thanks to PPP for the CTF!
