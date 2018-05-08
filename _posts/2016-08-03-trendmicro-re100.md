@@ -3,9 +3,10 @@ layout: post
 title: "TrendMicro CTF 2016 - re100"
 date: 2016-08-03 00:25:06
 description: Solving a reverse engineering challenge using r2 and ESIL
+categories:
+ - writeup
 tags:
  - radare2
- - writeup
 share: true
 ---
 

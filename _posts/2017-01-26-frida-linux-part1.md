@@ -3,6 +3,8 @@ layout: post
 title: "Binary instrumentation with Frida on Linux (Part 1)"
 date: 2017-01-26 00:25:06
 description: A short introduction to instrumentation and Frida on Linux
+categories:
+ - tutorial
 tags:
  - frida
  - instrumentation

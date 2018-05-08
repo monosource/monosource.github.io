@@ -3,6 +3,8 @@ layout: post
 title: "Solving Radare2 Explorations Tutorial 2 with angr"
 date: 2016-06-28 00:25:06
 description: A very short intro to angr and symbolic execution
+categories:
+ - tutorial
 tags:
  - symbolic execution
  - angr
