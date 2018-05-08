@@ -16,7 +16,7 @@ PlaidCTF was pretty neat and a bit wacky, as always. I managed to tackle a few c
 
 > Disclaimer: I am not an APL programmer, though I really enjoy the language from a conceptual point of view (terseness and expressivity through notation); and I have been called a lunatic on many occasions.
 
-In this post, I will give you a brief overview of APL basics, since we will be using the language itself to solve the challenge. You may skip over it and go straight for the solution description if you're not interested (though you would be missing out on some ~crazy~ cool language features that APL provides).
+In this post, I will give you a brief overview of APL basics, since we will be using the language itself to solve the challenge. You may skip over it and go straight for the solution description if you're not interested (though you would be missing out on some ~~crazy~~ cool language features that APL provides).
 
 At its core, APL is a functional programming language, dealing with functions and operators (higher-order functions which take other functions as arguments). One of the learning difficulties most often cited comes not from the high-level abstractions (I'm sure most of you are comfortable with Python's own `map`, `lambda`, `filter` and so on), but the notation used. APL has its own set of 50 (close to 80 in modern implementations) Unicode characters, each denoting a function or operator, making the code very dense (and the language very adequate for tasks such as code golfing) and somewhat challenging to read for newcomers.
 
