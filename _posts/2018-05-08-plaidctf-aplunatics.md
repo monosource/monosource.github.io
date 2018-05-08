@@ -42,7 +42,7 @@ A monadic function has a single right-hand side argument, denoted by the formal 
 
 ## Arrays
 
-APL works beautifully with arrays of any dimension. Most function will work over arrays without any extra work from the programmer.
+APL works beautifully with arrays of any dimension. Most functions will work over arrays without any extra work from the programmer.
 
 {% highlight apl %}
 ⍝ Numbers 1 through 8; APL is 1-indexed
