@@ -28,11 +28,11 @@ But you can also write some code snippets to do some more complex patching tasks
 
 I find BinaryNinja to be a very good hex editor, especially given the built-in tranform tools for common tasks such as XOR-ing with a key, decoding base64 or grabbing the data to use elsewhere.
 
-![bn_hex_edit_1](images/bn_hex_edit_1.png)
+![bn_hex_edit_1](https://raw.githubusercontent.com/monosource/monosource.github.io/master/images/bn_hex_edit_1.png)
 
 There are a few coloring options available: you can make ASCII values stand out or only colorize values which have been modified (through the GUI or the API). One use case for this feature would be to take two memory dumps of the same process at two different points in time and patch the bytes which have been changed. Coloring the bytes can help see patterns in the way the data was written.
 
-![bn_hex_edit_2](images/bn_hex_edit_2.png)
+![bn_hex_edit_2](https://raw.githubusercontent.com/monosource/monosource.github.io/master/images/bn_hex_edit_2.png)
 
 # Syscall-based function renaming
 
@@ -55,7 +55,7 @@ for func in bv.functions:
 
 (Note to self: I should probably refactor this at some point, replace the `try`-`except` block with something more sane, such as `hasattr`). This will also rename functions by appending the syscall names, which makes analysis much easier, since most library functions are wrappers over native syscalls.
 
-![renamed_functions](images/bn_renamed_functions_syscalls.png)
+![renamed_functions](https://raw.githubusercontent.com/monosource/monosource.github.io/master/images/bn_renamed_functions_syscalls.png)
 
 # Mixed platforms
 
@@ -126,7 +126,7 @@ segment readable writable
   hello32_str: db "Hello from 32bits!", 0xa, 0
 {% endhighlight nasm %}
 
-![x86_64_confusion](images/x86_64_confusion.png)
+![x86_64_confusion](https://raw.githubusercontent.com/monosource/monosource.github.io/master/images/x86_64_confusion.png)
 
 As you can see, Ninja disassembles the function as 32bit code. It's still readable, but that's because this is a simple example, with very little instruction variety. We can actually undefine this function and use the API to create it as a `Linux x86_64` function by explicitly specifying the Platform in the [BinaryView.create_user_function](https://api.binary.ninja/binaryninja.binaryview-module.html#binaryninja.binaryview.BinaryView.create_user_function) method.
 
@@ -136,7 +136,7 @@ bv.remove_function(x64_func)
 bv.create_user_function(here, Platform['linux-x86_64'])
 {% endhighlight python %}
 
-![x86_64_clean](images/x86_64_clean.png)
+![x86_64_clean](https://raw.githubusercontent.com/monosource/monosource.github.io/master/images/x86_64_clean.png)
 
 Much better!
 
