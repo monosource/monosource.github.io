@@ -16,7 +16,7 @@ I find myself reaching for [BinaryNinja](https://binary.ninja/) more and more th
 
 # Global variables
 
-The integrated python interpreter comes with a few context-sensitive global variables which can be used in your snippets of code. You'll find these [here](https://docs.binary.ninja/getting-started/index.html), under `Script (Python) Console`.
+The integrated python interpreter comes with a few context-sensitive global variables which can be used in your snippets of code. You'll find these [here](https://docs.binary.ninja/getting-started/index.html#script-python-console).
 
 # Patching
 
